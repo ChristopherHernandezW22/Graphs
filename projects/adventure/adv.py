@@ -29,7 +29,33 @@ player = Player(world.starting_room)
 # traversal_path = ['n', 'n']
 traversal_path = []
 
+# code here
+visited = {}
+room_id_stack = Stack()
+current_room_id = player.current_room.id
 
+directed_path = []
+append_count = 684
+count = 0
+
+def bfs(starting, ending):
+    queue = Queue()
+    bfs_visited = set()
+    queue.enqueue([starting])
+    current_path = []
+    movement_path = []
+
+def directed_movement(direction):
+
+def reverse_letters(letter):
+    if letter == 'n':
+        return 's'
+    if letter == 's':
+        return 'n'
+    if letter == 'e':
+        return 'w'
+    if letter == 'w':
+        return 'e'
 
 # TRAVERSAL TEST
 visited_rooms = set()

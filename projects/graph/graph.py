@@ -42,17 +42,17 @@ class Graph:
         """
         # pass  # TODO
 
-        # queue = Queue()
-        # visited = set()
-        # queue.enqueue(starting_vertex)
-        # while queue.size() > 0:
-        #     current_node = queue.dequeue()
-        #     if current_node not in visited:
-        #         print(current_node)
-        #         visited.add(current_node)
-        #         edges = self.get_neighbors(current_node)
-        #         for edge in edges:
-        #             queue.enqueue(edge)
+        queue = Queue()
+        visited = set()
+        queue.enqueue(starting_vertex)
+        while queue.size() > 0:
+            current_node = queue.dequeue()
+            if current_node not in visited:
+                print(current_node)
+                visited.add(current_node)
+                edges = self.get_neighbors(current_node)
+                for edge in edges:
+                    queue.enqueue(edge)
 
     def dft(self, starting_vertex):
         """
@@ -61,18 +61,18 @@ class Graph:
         """
         # pass  # TODO
 
-        # stack = Stack()
-        # visited = set()
+        stack = Stack()
+        visited = set()
 
-        # stack.push(starting_vertex)
-        # while stack.size() > 0:
-        #     current_node = stack.pop()
-        #     if current_node not in visited:
-        #         print(current_node)
-        #         visited.add(current_node)
-        #         edges = self.get_neighbors(current_node)
-        #         for edge in edges:
-        #             stack.push(edge)
+        stack.push(starting_vertex)
+        while stack.size() > 0:
+            current_node = stack.pop()
+            if current_node not in visited:
+                print(current_node)
+                visited.add(current_node)
+                edges = self.get_neighbors(current_node)
+                for edge in edges:
+                    stack.push(edge)
 
     def dft_recursive(self, starting_vertex, visited=None):
         """
@@ -83,18 +83,18 @@ class Graph:
         """
         # pass  # TODO
 
-        # if visited is None:
-        #     visited = set()
-        # if starting_vertex is None:
-        #     return
-        # if starting_vertex not in visited:
-        #     visited.add(starting_vertex)
-        #     print(starting_vertex)
-        # else:
-        #     return
-        # edges = self.get_neighbors(starting_vertex)
-        # for edge in edges:
-        #     self.dft_recursive(edge, visited)
+        if visited is None:
+            visited = set()
+        if starting_vertex is None:
+            return
+        if starting_vertex not in visited:
+            visited.add(starting_vertex)
+            print(starting_vertex)
+        else:
+            return
+        edges = self.get_neighbors(starting_vertex)
+        for edge in edges:
+            self.dft_recursive(edge, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -104,19 +104,19 @@ class Graph:
         """
         # pass  # TODO
 
-        # queue = Queue()
-        # visited = set()
-        # queue.enqueue([starting_vertex])
-        # while queue.size() > 0:
-        #     current_path = queue.dequeue()
-        #     current_node = current_path[-1]
-        #     if current_node == destination_vertex:
-        #         return current_path
-        #     if current_node not in visited:
-        #         visited.add(current_node)
-        #         edges = self.get_neighbors(current_node)
-        #         for edge in edges:
-        #             queue.enqueue(current_path + [edge])
+        queue = Queue()
+        visited = set()
+        queue.enqueue([starting_vertex])
+        while queue.size() > 0:
+            current_path = queue.dequeue()
+            current_node = current_path[-1]
+            if current_node == destination_vertex:
+                return current_path
+            if current_node not in visited:
+                visited.add(current_node)
+                edges = self.get_neighbors(current_node)
+                for edge in edges:
+                    queue.enqueue(current_path + [edge])
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -126,19 +126,19 @@ class Graph:
         """
         # pass  # TODO
 
-        # stack = Stack()
-        # visited = set()
-        # stack.push([starting_vertex])
-        # while stack.size() > 0:
-        #     current_path = stack.pop()
-        #     current_node = current_path[-1]
-        #     if current_node == destination_vertex:
-        #         return current_path
-        #     if current_node not in visited:
-        #         visited.add(current_node)
-        #         edges = self.get_neighbors(current_node)
-        #         for edge in edges:
-        #             stack.push(current_path + [edge])
+        stack = Stack()
+        visited = set()
+        stack.push([starting_vertex])
+        while stack.size() > 0:
+            current_path = stack.pop()
+            current_node = current_path[-1]
+            if current_node == destination_vertex:
+                return current_path
+            if current_node not in visited:
+                visited.add(current_node)
+                edges = self.get_neighbors(current_node)
+                for edge in edges:
+                    stack.push(current_path + [edge])
 
     def dfs_recursive(self, starting_vertex, destination_vertex, visited=None, path=None):
         """
@@ -150,24 +150,24 @@ class Graph:
         """
         # pass  # TODO
 
-        # if visited is None:
-        #     visited = set()
-        # if path is None:
-        #     path = []
-        # visited.add(starting_vertex)
-        # # path.append(starting_vertex)
-        # path = path + [starting_vertex]
-        # if starting_vertex == destination_vertex:
-        #     # Base Case
-        #     return path
-        # edges = self.get_neighbors(starting_vertex)
-        # for edge in edges:
-        #     if edge not in visited:
-        #         possible_path = self.dfs_recursive(edge, destination_vertex, visited, path)
-        #         if possible_path:
-        #             return possible_path
+        if visited is None:
+            visited = set()
+        if path is None:
+            path = []
+        visited.add(starting_vertex)
+        # path.append(starting_vertex)
+        path = path + [starting_vertex]
+        if starting_vertex == destination_vertex:
+            # Base Case
+            return path
+        edges = self.get_neighbors(starting_vertex)
+        for edge in edges:
+            if edge not in visited:
+                possible_path = self.dfs_recursive(edge, destination_vertex, visited, path)
+                if possible_path:
+                    return possible_path
 
-        # return None
+        return None
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
